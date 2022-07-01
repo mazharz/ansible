@@ -1,0 +1,11 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: Update apt
+      apt: update_cache=yes
+      changed_when: False
+      # tags:
+      #   - install
+      #   - core
+  tasks:
+    - include: tasks/i3.yml
