@@ -1,0 +1,79 @@
+- name: Install disk apps
+  pacman: name={{item}}
+  with_items:
+    - baobab
+    - gparted
+    - gnome-disk-utility
+  tags:
+    - disk-apps
+    - packages
+
+- name: Install system apps
+  pacman: name={{item}}
+  with_items:
+    - calibre
+    - xournalpp
+    - libreoffice-still
+  tags:
+    - document-apps
+    - packages
+
+- name: Install multimedia apps
+  pacman: name={{item}}
+  with_items:
+    - vlc
+    - mpv
+    - simplescreenrecorder
+    - audacity
+    - kid3
+    - handbrake
+    - mkvtoolnix-gui
+    - ffmpegthumbnailer
+    - gimp
+    - blender
+  tags:
+    - multimedia-apps
+    - packages
+
+- name: Install internet apps
+  pacman: name={{item}}
+  with_items:
+    - telegram-desktop
+    - firefox
+    - tor
+    - qbittorrent
+  tags:
+    - internet-apps
+    - packages
+
+- name: Install chrome
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm google-chrome
+  tags:
+    - chrome
+    - packages
+
+- name: Install slack
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm slack-desktop
+  tags:
+    - slack
+    - packages
+
+- name: Add tor browser gpg keys
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
+  tags:
+    - tor-browser
+    - packages
+
+- name: Install tor browser
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm tor-browser
+  tags:
+    - tor-browser
+    - packages

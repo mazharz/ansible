@@ -1,0 +1,178 @@
+- name: Install zsh
+  pacman: name={{item}}
+  with_items:
+    - zsh
+  tags:
+    - zsh
+    - pde
+    - packages
+
+- name: Install oh-my-zsh
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm oh-my-zsh-git
+  tags:
+    - zsh
+    - pde
+    - packages
+
+- name: Install fzf
+  pacman: name={{item}}
+  with_items:
+    - fzf
+  tags:
+    - fzf
+    - pde
+    - packages
+
+- name: Install tmux
+  pacman: name={{item}}
+  with_items:
+    - tmux
+  tags:
+    - tmux
+    - pde
+    - packages
+
+- name: Install nvm
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm nvm
+  # ansible.builtin.command: nvm install node
+  tags:
+    - nvm
+    - pde
+    - packages
+
+- name: Install node
+  become: yes
+  become_user: m47h4r
+  shell: "source $HOME/.nvm/nvm.sh && nvm install node"
+  args:
+    executable: /bin/bash
+  tags:
+    - nvm
+    - pde
+    - packages
+
+# - name: Install global npms
+#   npm:
+#     name: "{{ item }}"
+#     global: yes
+#     with_items:
+#       - eslint
+#       - sass
+#       - prettier
+#       - typescript
+#       - percollate
+#   executable: "$HOME/.nvm/versions/node/${source $HOME/.nvm/nvm.sh && nvm ls --no-colors --no-alias | awk  '{print $2}'}/bin/npm"
+#   tags:
+#     - npm-globals
+#     - nvm
+#     - pde
+#     - packages
+
+- name: Install neovim
+  pacman: name={{item}}
+  with_items:
+    - neovim
+    - ripgrep
+  tags:
+    - neovim
+    - pde
+    - packages
+
+- name: Install vim-plug
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  tags:
+    - neovim
+    - pde
+    - packages
+
+- name: Install docker
+  pacman: name={{item}}
+  with_items:
+    - docker
+    - docker-compose
+  tags:
+    - docker
+    - pde
+    - packages
+
+- name: Add m47h4r to docker group
+  ansible.builtin.user:
+    name: m47h4r
+    shell: /usr/bin/zsh
+    groups: docker
+    append: yes
+  tags:
+    - docker
+    - pde
+    - packages
+
+- name: Enable & start docker service
+  ansible.builtin.systemd:
+    name: docker
+    enabled: yes
+    state: started
+  tags:
+    - docker
+    - pde
+    - packages
+
+- name: Install postman
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm postman-bin
+  tags:
+    - postman
+    - pde
+    - packages
+
+- name: Install altair
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm altair
+  tags:
+    - altair
+    - pde
+    - packages
+
+- name: Install other dev tools
+  pacman: name={{item}}
+  with_items:
+    - sqlitebrowser
+    - filezilla
+  tags:
+    - other-dev-tools
+    - pde
+    - packages
+
+- name: Install noto font
+  pacman: name={{item}}
+  with_items:
+    - noto-fonts
+  tags:
+    - font
+    - pde
+    - packages
+
+- name: Install fira nerd font
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm nerd-fonts-fira-code
+  tags:
+    - font
+    - pde
+    - packages
+
+- name: Install vazir font
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm vazirmatn-fonts vazir-code-fonts
+  tags:
+    - font
+    - pde
+    - packages

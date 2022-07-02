@@ -1,0 +1,25 @@
+- name: Install Command-line utilities
+  pacman: name={{item}}
+  with_items:
+    # - jcal
+    - lm_sensors
+    - htop
+    - unrar
+    - unzip
+    - tree
+    - rsync
+    - imagemagick
+    - nethogs
+    - net-tools
+    - python-pip
+  tags:
+    - cmd-utils
+    - packages
+
+- name: Install youtube-dl utilities
+  ansible.builtin.pip: name={{item}}
+  with_items:
+    - youtube-dl
+  tags:
+    - cmd-utils
+    - packages

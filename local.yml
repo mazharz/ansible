@@ -1,11 +1,19 @@
 - hosts: localhost
-  become: true
+  become: yes
   pre_tasks:
-    - name: Update apt
-      apt: update_cache=yes
-      changed_when: False
-      # tags:
-      #   - install
-      #   - core
+    - name: Update & upgrade pacman
+      pacman:
+        update_cache: yes
+        upgrade: yes
+      tags:
+        - update
+        - upgrade
   tasks:
+    - include: tasks/trizen.yml
     - include: tasks/i3.yml
+    - include: tasks/dotfiles.yml
+    - include: tasks/pde.yml
+    - include: tasks/cmd-utils.yml
+    - include: tasks/apps.yml
+    - include: tasks/sudo.yml
+    - include: tasks/power.yml

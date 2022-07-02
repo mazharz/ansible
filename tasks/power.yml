@@ -1,0 +1,4 @@
+- name: Copy audio power saving option
+  copy: src=files/power/audio dest=/etc/modprobe.d/audio_powersave.conf
+  tags:
+    - power

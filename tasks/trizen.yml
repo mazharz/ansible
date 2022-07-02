@@ -1,0 +1,19 @@
+- name: Checkout trizen repo
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/trizen-git.git
+    dest: ~/.builds/trizen
+  tags:
+    - aur
+    - trizen
+
+- name: Install trizen
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: makepkg -si --noconfirm
+  args:
+    chdir: ~/.builds/trizen
+  tags:
+    - aur
+    - trizen

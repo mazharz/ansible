@@ -1,3 +1,35 @@
 - name: Install i3
-  apt: name=i3
-  # tags: i3
+  pacman: name={{item}}
+  with_items:
+    - i3
+    - i3blocks
+    - kitty
+    - rofi
+    - maim
+    - feh
+    - arandr
+    - pavucontrol
+    - nautilus
+    - dunst
+    - picom
+    - copyq
+    - bluez
+    - bluez-utils
+    - blueman
+    - networkmanager
+    - networkmanager-openvpn
+    - network-manager-applet
+    - playerctl
+    - xclip
+  tags:
+    - i3
+    - packages
+
+- name: Enable & start bluetooth service
+  ansible.builtin.systemd:
+    name: bluetooth
+    enabled: yes
+    state: started
+  tags:
+    - bluetooth-service
+    - packages

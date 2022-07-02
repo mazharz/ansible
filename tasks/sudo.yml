@@ -1,0 +1,4 @@
+- name: Copy sudoer file
+  copy: src=files/sudo/m47h4r dest=/etc/sudoers.d/m47h4r owner=root group=root mode=0440
+  tags:
+    - sudo

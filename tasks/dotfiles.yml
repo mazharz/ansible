@@ -1,0 +1,17 @@
+- name: Checkout dotfiles repo
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.git:
+    repo: git@github.com:m47h4r/dotfiles.git
+    dest: ~/.dotfiles
+  tags:
+    - dotfiles
+
+- name: Populate the dotfiles
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: stow .
+  args:
+    chdir: ~/.dotfiles/
+  tags:
+    - dotfiles
