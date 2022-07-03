@@ -154,6 +154,7 @@
   pacman: name={{item}}
   with_items:
     - noto-fonts
+    - noto-fonts-emoji
   tags:
     - font
     - pde
