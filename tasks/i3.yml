@@ -1,6 +1,8 @@
 - name: Install i3
   pacman: name={{item}}
   with_items:
+    - xorg
+    - xorg-init
     - i3
     - i3blocks
     - kitty
@@ -21,6 +23,7 @@
     - network-manager-applet
     - playerctl
     - xclip
+    - redshift
   tags:
     - i3
     - packages
