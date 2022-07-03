@@ -63,6 +63,22 @@
     - slack
     - packages
 
+- name: Add spotify gpg keys
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.shell: "curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg --import -"
+  tags:
+    - spotify
+    - packages
+
+- name: Install spotify
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm spotify
+  tags:
+    - spotify
+    - packages
+
 - name: Add tor browser gpg keys
   become: yes
   become_user: m47h4r
