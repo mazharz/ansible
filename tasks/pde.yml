@@ -38,7 +38,6 @@
   become: yes
   become_user: m47h4r
   ansible.builtin.command: trizen -S --noconfirm nvm
-  # ansible.builtin.command: nvm install node
   tags:
     - nvm
     - pde
@@ -88,6 +87,15 @@
   ansible.builtin.command: sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   tags:
     - neovim
+    - pde
+    - packages
+
+- name: Install GHCup
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm ghcup-hs-bin
+  tags:
+    - ghc
     - pde
     - packages
 

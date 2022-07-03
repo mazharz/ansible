@@ -29,6 +29,7 @@
     - handbrake
     - mkvtoolnix-gui
     - ffmpegthumbnailer
+    - eog
     - gimp
     - blender
   tags:
