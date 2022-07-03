@@ -1,0 +1,4 @@
+- name: Copy touchpad touch click config
+  copy: src=files/touchpad/30-touchpad.conf dest=/etc/X11/xorg.conf.d/30-touchpad.conf
+  tags:
+    - touchpad

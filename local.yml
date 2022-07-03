@@ -17,3 +17,4 @@
     - include: tasks/apps.yml
     - include: tasks/sudo.yml
     - include: tasks/power.yml
+    - include: tasks/touchpad.yml
