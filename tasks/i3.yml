@@ -29,6 +29,23 @@
     - i3
     - packages
 
+- name: Install gnome keyring
+  pacman: name={{item}}
+  with_items:
+    - gnome-keyring
+    - libsecret
+    - libgnome-keyring
+    - seahorse
+  tags:
+    - keyring
+    - packages
+
+- name: Append necessary configuration
+  ansible.builtin.shell: 'echo -e "\nauth optional pam_gnome_keyring.so\nsession optional pam_gnome_keyring.so auto_start\n" >> /etc/pam.d/login'
+  tags:
+    - keyring
+    - packages
+
 - name: Create ~/Pictures directory
   become: yes
   become_user: m47h4r
