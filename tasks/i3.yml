@@ -24,6 +24,7 @@
     - playerctl
     - xclip
     - redshift
+    - lxappearance
   tags:
     - i3
     - packages

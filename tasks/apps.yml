@@ -94,3 +94,11 @@
   tags:
     - tor-browser
     - packages
+
+- name: Install gnome-shell-pomodoro
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm gnome-shell-pomodoro
+  tags:
+    - pomodoro
+    - packages
