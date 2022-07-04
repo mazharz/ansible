@@ -29,6 +29,24 @@
     - i3
     - packages
 
+- name: Install gruvbox gtk theme
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm gruvbox-material-gtk-theme-git
+  tags:
+    - gtk theme
+    - gruvbox
+    - packages
+
+- name: Install gruvbox icon theme
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm gruvbox-material-icon-theme-git
+  tags:
+    - icon theme
+    - gruvbox
+    - packages
+
 - name: Install gnome keyring
   pacman: name={{item}}
   with_items:
