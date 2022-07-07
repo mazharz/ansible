@@ -11,6 +11,7 @@
     - imagemagick
     - nethogs
     - net-tools
+    - bind-tools
     - python-pip
   tags:
     - cmd-utils

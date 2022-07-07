@@ -21,6 +21,7 @@
     - bluez
     - bluez-utils
     - blueman
+    - openssh
     - networkmanager
     - networkmanager-openvpn
     - network-manager-applet
@@ -79,6 +80,15 @@
   tags:
     - directory
     - system
+
+- name: Enable & start NetworkManager service
+  ansible.builtin.systemd:
+    name: NetworkManager
+    enabled: yes
+    state: started
+  tags:
+    - networkmanager-service
+    - packages
 
 - name: Enable & start bluetooth service
   ansible.builtin.systemd:
