@@ -23,6 +23,7 @@
   with_items:
     - vlc
     - mpv
+    - cmus
     - simplescreenrecorder
     - audacity
     - kid3

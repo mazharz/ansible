@@ -10,6 +10,9 @@
     - maim
     - feh
     - arandr
+    - pipewire
+    - pipewire-alsa
+    - pipewire-pulse
     - pavucontrol
     - nautilus
     - dunst
@@ -25,6 +28,8 @@
     - xclip
     - redshift
     - lxappearance
+    - gucharmap
+    - gnome-calculator
   tags:
     - i3
     - packages
