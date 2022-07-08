@@ -31,6 +31,7 @@
     - lxappearance
     - gucharmap
     - gnome-calculator
+    - slop
   tags:
     - i3
     - packages
@@ -40,8 +41,9 @@
   become_user: m47h4r
   ansible.builtin.command: trizen -S --noconfirm gruvbox-material-gtk-theme-git
   tags:
-    - gtk theme
+    - gtk-theme
     - gruvbox
+    - i3
     - packages
 
 - name: Install gruvbox icon theme
@@ -49,8 +51,9 @@
   become_user: m47h4r
   ansible.builtin.command: trizen -S --noconfirm gruvbox-material-icon-theme-git
   tags:
-    - icon theme
+    - icon-theme
     - gruvbox
+    - i3
     - packages
 
 - name: Install gnome keyring
@@ -62,12 +65,14 @@
     - seahorse
   tags:
     - keyring
+    - i3
     - packages
 
-- name: Append necessary configuration
+- name: Append necessary configuration to gnome keyring
   ansible.builtin.shell: 'echo -e "\nauth optional pam_gnome_keyring.so\nsession optional pam_gnome_keyring.so auto_start\n" >> /etc/pam.d/login'
   tags:
     - keyring
+    - i3
     - packages
 
 - name: Create ~/Pictures directory
@@ -79,6 +84,7 @@
     mode: "0755"
   tags:
     - directory
+    - i3
     - system
 
 - name: Enable & start NetworkManager service
@@ -88,6 +94,7 @@
     state: started
   tags:
     - networkmanager-service
+    - i3
     - packages
 
 - name: Enable & start bluetooth service
@@ -97,4 +104,5 @@
     state: started
   tags:
     - bluetooth-service
+    - i3
     - packages

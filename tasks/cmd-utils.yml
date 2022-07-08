@@ -24,3 +24,12 @@
   tags:
     - cmd-utils
     - packages
+
+- name: Install jcal
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm jcal-git
+  tags:
+    - jcal
+    - cmd-utils
+    - packages
