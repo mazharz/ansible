@@ -1,9 +1,19 @@
+- name: Check if dotfiles exists locally
+  become: yes
+  become_user: m47h4r
+  stat:
+    path: ~/.dotfiles
+  register: dotfiles_register
+  tags:
+    - dotfiles
+
 - name: Checkout dotfiles repo
   become: yes
   become_user: m47h4r
   ansible.builtin.git:
     repo: git@github.com:m47h4r/dotfiles.git
     dest: ~/.dotfiles
+  when: not dotfiles_register.stat.exists
   tags:
     - dotfiles
 

@@ -9,12 +9,12 @@
         - update
         - upgrade
   tasks:
-    - include: tasks/trizen.yml
-    - include: tasks/i3.yml
-    - include: tasks/dotfiles.yml
-    - include: tasks/pde.yml
-    - include: tasks/cmd-utils.yml
-    - include: tasks/apps.yml
-    - include: tasks/sudo.yml
-    - include: tasks/power.yml
-    - include: tasks/touchpad.yml
+    - import_tasks: tasks/trizen.yml
+    - import_tasks: tasks/i3.yml
+    - import_tasks: tasks/dotfiles.yml
+    - import_tasks: tasks/pde.yml
+    - import_tasks: tasks/cmd-utils.yml
+    - import_tasks: tasks/apps.yml
+    - import_tasks: tasks/sudo.yml
+    - import_tasks: tasks/power.yml
+    - import_tasks: tasks/touchpad.yml
