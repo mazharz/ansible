@@ -75,6 +75,15 @@
     - i3
     - packages
 
+- name: Install xkb-switch
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.command: trizen -S --noconfirm xkb-switch
+  tags:
+    - xkb-switch
+    - i3
+    - packages
+
 - name: Create ~/Pictures directory
   become: yes
   become_user: m47h4r
