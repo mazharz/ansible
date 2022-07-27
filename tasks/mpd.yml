@@ -1,0 +1,52 @@
+- name: Install mpd, mpc, and ncmpc
+  pacman: name={{item}}
+  with_items:
+    - mpd
+    - mpc
+    - ncmpc
+  tags:
+    - mpd
+    - apps
+    - packages
+
+- name: Create mpd directory
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.file:
+    path: ~/.mpd
+    state: directory
+    mode: "0755"
+  tags:
+    - mpd
+    - apps
+    - packages
+
+- name: Create files for mpd
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.file:
+    path: "{{item}}"
+    state: touch
+    mode: "0644"
+  loop:
+    - ~/.mpd/log
+    - ~/.mpd/pid
+    - ~/.mpd/state
+    - ~/.mpd/sticker.sql
+  tags:
+    - mpd
+    - apps
+    - packages
+
+- name: Enable & start mpd service
+  become: yes
+  become_user: m47h4r
+  ansible.builtin.systemd:
+    name: mpd
+    enabled: yes
+    state: started
+    scope: user
+  tags:
+    - mpd
+    - apps
+    - packages

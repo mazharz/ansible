@@ -18,3 +18,4 @@
     - import_tasks: tasks/sudo.yml
     - import_tasks: tasks/power.yml
     - import_tasks: tasks/touchpad.yml
+    - import_tasks: tasks/mpd.yml

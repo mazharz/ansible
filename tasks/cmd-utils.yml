@@ -1,8 +1,8 @@
 - name: Install Command-line utilities
   pacman: name={{item}}
   with_items:
-    # - jcal
     - lm_sensors
+    - sysstat
     - htop
     - unrar
     - unzip
@@ -11,8 +11,10 @@
     - imagemagick
     - nethogs
     - net-tools
+    - aria2
     - bind-tools
     - python-pip
+    - reflector
   tags:
     - cmd-utils
     - packages

@@ -32,6 +32,8 @@
     - gucharmap
     - gnome-calculator
     - slop
+    - gvfs-mtp
+    - gvfs-gphoto2
   tags:
     - i3
     - packages
@@ -84,11 +86,11 @@
     - i3
     - packages
 
-- name: Create ~/Pictures directory
+- name: Create ~/Pictures/Wallpaper directory
   become: yes
   become_user: m47h4r
   ansible.builtin.file:
-    path: ~/Pictures
+    path: ~/Pictures/Wallpaper
     state: directory
     mode: "0755"
   tags:
